@@ -1,7 +1,7 @@
-import keras
+from tensorflow import keras
 
-from keras.models import Model
-from keras.layers import Dense, Input, Flatten, Reshape, Dropout, Activation
+from tensorflow.keras.models import Model
+from tensorflow.keras.layers import Dense, Input, Flatten, Reshape, Dropout, Activation
 
 def PRN(height, width, node_count):
     input = Input(shape=(height, width, 17))
@@ -13,7 +13,7 @@ def PRN(height, width, node_count):
     x = keras.layers.Activation('softmax')(x)
     x = Reshape((height, width, 17))(x)
     model = Model(inputs=input, outputs=x)
-    print model.summary()
+    print(model.summary())
     return model
 
 
@@ -38,5 +38,5 @@ def PRN_Seperate(height, width, node_count):
     x = keras.layers.Concatenate()(out)
     x = Reshape((height, width, 17))(x)
     model = Model(inputs=input, outputs=x)
-    print model.summary()
+    print(model.summary())
     return model
